@@ -1,8 +1,3 @@
-
-// 3. 환율정보 들고오기
-// 4. 드랍다운 리스트ㅔㅇ서 아이템을 선택하면 아이템이 바뀜 
-// 5. 금액을 입력하면 환전이 된다.
-// 6. 드랍다운 리스트에서 아이템을 선택하면 다시 그 단위 기준으로 환전이 된다.
 // 7. 숫자를 한국어로 읽어준다.
 // 8. 밑에 박스에서 숫자를 바꿔도 위에 환율이 적용 된다.
 
@@ -35,6 +30,7 @@ document
     .forEach(menu => menu.addEventListener("click", function(){
         document.getElementById("from-button").textContent = this.textContent;
         fromCurrency = this.textContent;
+        convert();
     }));
 
 document
@@ -42,4 +38,13 @@ document
     .forEach(menu => menu.addEventListener("click", function(){
         document.getElementById("to-button").textContent = this.textContent;
         toCurrency = this.textContent;
+        convert();
     }));
+
+function convert(){
+    let amount = document.getElementById("from-input").value;
+    let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
+    
+    document.getElementById("to-input").value = convertedAmount;
+}
+
