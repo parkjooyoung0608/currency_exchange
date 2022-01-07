@@ -27,3 +27,19 @@ let currencyRatio = {
     },
 }
 
+let fromCurrency = 'USD';
+let toCurrency = 'USD';
+
+document
+    .querySelectorAll("#from-currency-list a")
+    .forEach(menu => menu.addEventListener("click", function(){
+        document.getElementById("from-button").textContent = this.textContent;
+        fromCurrency = this.textContent;
+    }));
+
+document
+    .querySelectorAll("#to-currency-list a")
+    .forEach(menu => menu.addEventListener("click", function(){
+        document.getElementById("to-button").textContent = this.textContent;
+        toCurrency = this.textContent;
+    }));
